@@ -1,4 +1,4 @@
-import { IArchitectRepository } from '../repositories/IArchitectRepository'
+import { IUserRepository } from '../repositories/IUserRepository'
 
 const validator = require('validator');
 
@@ -9,13 +9,14 @@ interface IRequest {
     phone: string;
     gender: string;
     age: number;
+    type: string;
 }
 
-class CreateArchitectService {
+class CreateUserService {
 
-    constructor(private architectRepository: IArchitectRepository) { }
+    constructor(private architectRepository: IUserRepository) { }
 
-    execute({ name, email, password, phone, gender, age }: IRequest) {
+    execute({ name, email, password, phone, gender, age, type }: IRequest) {
 
         if (!validator.isEmail(email)) {
             let response = {
@@ -26,7 +27,7 @@ class CreateArchitectService {
             return response
         }
 
-        this.architectRepository.create({ name, email, password, phone, gender, age })
+        this.architectRepository.create({ name, email, password, phone, gender, age, type })
 
         let response = {
             message: 'Cadastro Concluido',
@@ -37,4 +38,4 @@ class CreateArchitectService {
     }
 }
 
-export { CreateArchitectService }
+export { CreateUserService }

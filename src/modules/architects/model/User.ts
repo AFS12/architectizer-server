@@ -1,4 +1,4 @@
-class Architect {
+class User {
     //Ambos precisam ter informações como Nome, E-mail, Telefone, Gênero, idade, etc.
 
     id?: number;
@@ -15,4 +15,4 @@ class Architect {
     }
 }
 
-export { Architect }
+export { User }

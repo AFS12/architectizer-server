@@ -1,5 +1,5 @@
 import express from "express";
-import { architectRoutes } from "./routes/architect.routes";
+import { usersRoutes } from "./routes/users.routes";
 
 const app = express();
 
@@ -12,6 +12,6 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 
-app.use("/architects", architectRoutes)
+app.use("/users", usersRoutes)
 
 app.listen(3333, () => console.log("Server is running!"))
