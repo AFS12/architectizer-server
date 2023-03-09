@@ -14,7 +14,7 @@ interface IRequest {
 
 class CreateUserService {
 
-    constructor(private architectRepository: IUserRepository) { }
+    constructor(private userRepository: IUserRepository) { }
 
     execute({ name, email, password, phone, gender, age, type }: IRequest) {
 
@@ -27,7 +27,7 @@ class CreateUserService {
             return response
         }
 
-        this.architectRepository.create({ name, email, password, phone, gender, age, type })
+        this.userRepository.create({ name, email, password, phone, gender, age, type })
 
         let response = {
             message: 'Cadastro Concluido',

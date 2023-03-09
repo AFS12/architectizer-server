@@ -10,8 +10,19 @@ interface ICreateUserDTO {
     type: string;
 }
 
-interface IUserRepository {
-    create({ name, email, password, phone, gender, age, type }: ICreateUserDTO): void
+interface ILoginDTO {
+    email: string,
+    password: string
 }
 
-export { IUserRepository, ICreateUserDTO }
+interface IGetUserDTO {
+    id: string
+}
+
+interface IUserRepository {
+    create({ name, email, password, phone, gender, age, type }: ICreateUserDTO): void
+    login({ email }: ILoginDTO): Promise
+    getUser({ id }: IGetUserDTO): Promise
+}
+
+export { IUserRepository, ICreateUserDTO, ILoginDTO, IGetUserDTO }
