@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { UserRepoMysql } from "../modules/architects/repositories/UserRepoMysql";
-import { CreateUserService } from "../modules/architects/services/CreateUserService";
-import { LoginUserService } from "../modules/architects/services/LoginUserService";
-import { GetUserService } from "../modules/architects/services/GetUserService";
+import { UserRepoMysql } from "../modules/users/repositories/UserRepoMysql";
+import { CreateUserService } from "../modules/users/services/CreateUserService";
+import { LoginUserService } from "../modules/users/services/LoginUserService";
+import { GetUserService } from "../modules/users/services/GetUserService";
 
 
 const usersRoutes = Router()
