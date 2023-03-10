@@ -5,7 +5,8 @@
 npm install
 ```
 
-### Set Data base connections on files ./kenexfile.js and ./src/helpers/dbConnection.ts
+### Set Database connections on files ./kenexfile.js and ./src/helpers/dbConnection.ts
+### Database used is MYSQL
 
 ### After this, run migration command
 ```
