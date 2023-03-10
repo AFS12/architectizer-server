@@ -21,7 +21,7 @@ class CreateUserService {
         if (!validator.isEmail(email)) {
             let response = {
                 message: 'E-mail invalido',
-                statusCode: 200
+                statusCode: 204
             }
 
             return response
