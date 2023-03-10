@@ -1,5 +1,5 @@
 import { IUserRepository } from '../repositories/IUserRepository'
-import { getSecret } from '../../../secret/jwt';
+import { getSecret } from '../../../helpers/jwt';
 
 const validator = require('validator');
 const bcrypt = require('bcrypt');

@@ -1,4 +1,4 @@
-import { getSecret } from "../../../secret/jwt";
+import { getSecret } from "../../../helpers/jwt";
 import { IUserRepository } from "../repositories/IUserRepository";
 
 const jwt = require('jsonwebtoken');
@@ -24,8 +24,6 @@ class GetUserService {
             }).catch(error => {
                 console.log(error)
             })
-
-        console.log(user)
 
         let response = {
             user: user,

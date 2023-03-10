@@ -1,4 +1,3 @@
-import { User } from "../model/User";
 
 interface ICreateUserDTO {
     name: string;
@@ -23,6 +22,7 @@ interface IUserRepository {
     create({ name, email, password, phone, gender, age, type }: ICreateUserDTO): void
     login({ email }: ILoginDTO): Promise
     getUser({ id }: IGetUserDTO): Promise
+    getArchitects(): Promise
 }
 
 export { IUserRepository, ICreateUserDTO, ILoginDTO, IGetUserDTO }
