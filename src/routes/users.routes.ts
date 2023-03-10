@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { UserRepoMysql } from "../modules/architects/repositories/UserRepoMysql";
-import { CreateUserService } from "../modules/architects/services/CreateUserService";
-import { LoginUserService } from "../modules/architects/services/LoginUserService";
-import { GetUserService } from "../modules/architects/services/GetUserService";
-
+import { UserRepoMysql } from "../modules/users/repositories/UserRepoMysql";
+import { CreateUserService } from "../modules/users/services/CreateUserService";
+import { LoginUserService } from "../modules/users/services/LoginUserService";
+import { GetUserService } from "../modules/users/services/GetUserService";
+import { GerArchitectsService } from "../modules/users/services/GerArchitectsService";
 
 const usersRoutes = Router()
 const userRepository = new UserRepoMysql()
@@ -34,6 +34,15 @@ usersRoutes.get('/userdata/:token', async (request, response) => {
     const getUserService = new GetUserService(userRepository)
 
     const responseStatus = await getUserService.execute({ token })
+
+    return response.status(responseStatus.statusCode).json(responseStatus)
+})
+
+usersRoutes.get('/architects', async (request, response) => {
+
+    const gerArchitectsService = new GerArchitectsService(userRepository)
+
+    const responseStatus = await gerArchitectsService.execute()
 
     return response.status(responseStatus.statusCode).json(responseStatus)
 })

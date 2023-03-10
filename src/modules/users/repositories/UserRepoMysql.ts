@@ -1,16 +1,18 @@
 import { User } from "../model/User";
 import { IUserRepository, ICreateUserDTO, ILoginDTO, IGetUserDTO } from './IUserRepository'
+import { getConnection } from "../../../helpers/dbConnection";
 
 const mysql = require('mysql2');
+const db = getConnection()
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const connection = mysql.createPool({
-    host: '127.0.0.1',
-    user: 'root',
-    password: 'b12815f7',
-    database: 'architectize',
-    port: '3309',
+    host: db.host,
+    user: db.user,
+    password: db.password,
+    database: db.database,
+    port: db.port,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0
@@ -70,6 +72,22 @@ class UserRepoMysql implements IUserRepository {
                 if (err) reject(err);
 
                 connection.query(`SELECT * FROM users WHERE id = "${id}"`, (err, result) => {
+                    if (err) reject(err);
+                    resolve(result)
+                    connection.release()
+                });
+            });
+        })
+    }
+
+
+    getArchitects() {
+
+        return new Promise((resolve, reject) => {
+            connection.getConnection((err, connection) => {
+                if (err) reject(err);
+
+                connection.query(`SELECT * FROM users WHERE type = 1`, (err, result) => {
                     if (err) reject(err);
                     resolve(result)
                     connection.release()
