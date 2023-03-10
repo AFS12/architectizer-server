@@ -22,7 +22,7 @@ class LoginUserService {
         if (!validator.isEmail(email)) {
             let response = {
                 message: 'E-mail invalido',
-                statusCode: 200
+                statusCode: 204
             }
 
             return response
@@ -43,6 +43,12 @@ class LoginUserService {
                 console.log(error)
             })
 
+        if (!data) {
+            response.message = 'Dados invalidos'
+            response.statusCode = 204
+            return response
+        }
+
         await compare(password, data.password)
             .then(result => {
                 if (result) {
@@ -50,7 +56,7 @@ class LoginUserService {
                     response.statusCode = 200
                 } else {
                     response.message = 'Dados invalidos'
-                    response.statusCode = 200
+                    response.statusCode = 204
                     return response
                 }
             })

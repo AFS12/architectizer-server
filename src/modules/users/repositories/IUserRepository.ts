@@ -10,8 +10,7 @@ interface ICreateUserDTO {
 }
 
 interface ILoginDTO {
-    email: string,
-    password: string
+    email: string
 }
 
 interface IGetUserDTO {
